@@ -1,0 +1,8 @@
+{
+  "plugins": ["@typescript-eslint"],
+  "extends": ["prettier"],
+  "rules": {
+    "prefer-const": "error",
+    "react/no-unescaped-entities": 0
+  }
+}

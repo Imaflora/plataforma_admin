@@ -1,0 +1,22 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/plataformaservicos_admin
+    docker:
+      - image: cimg/node:18.2.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn build
